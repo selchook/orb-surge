@@ -1,0 +1,21 @@
+{
+  "name": "orb-surge",
+  "version": "1.0.0",
+  "description": "Magnetic orb energy collection game",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "start": "npm run dev"
+  },
+  "keywords": ["game", "phaser", "orb", "arcade"],
+  "author": "Game Developer",
+  "license": "MIT",
+  "dependencies": {
+    "phaser": "^3.60.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "typescript": "^5.3.0"
+  }
+}

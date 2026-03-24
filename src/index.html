@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Runner - Addictive Endless Runner Game</title>
+    <meta name="description" content="Fast-paced neon runner game. Dodge obstacles, collect power-ups, beat your high score!">
+    <meta name="keywords" content="neon runner, endless runner, arcade game, high score, addictive game">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas"></canvas>
+        
+        <div id="startScreen" class="screen">
+            <div class="logo">NEON<span class="glow">RUNNER</span></div>
+            <div class="subtitle">Endless Speed Challenge</div>
+            <button id="startBtn" class="neon-btn">START GAME</button>
+            <div class="controls">
+                <div>🔼 SPACE/CLICK - Jump</div>
+                <div>🔽 DOWN - Slide</div>
+            </div>
+        </div>
+        
+        <div id="gameOverScreen" class="screen hidden">
+            <div class="game-over-title">GAME OVER</div>
