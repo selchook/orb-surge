@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { MenuScene } from './scenes/MenuScene';
 import { GameScene } from './scenes/GameScene';
 import { GameOverScene } from './scenes/GameOverScene';
+import { onPlatform } from './ayvago/platform';
 
 function hideLoadingScreen(): void {
   const screen = document.getElementById('loading-screen');
@@ -23,4 +24,13 @@ const config: Phaser.Types.Core.GameConfig = {
   },
 };
 
-new Phaser.Game(config);
+const game = new Phaser.Game(config);
+
+// Inside Ayvago the platform pauses the game when its tab is hidden and can mute it.
+onPlatform((platform) => {
+  platform.onPause(() => game.loop.sleep());
+  platform.onResume(() => game.loop.wake());
+  platform.onMute((muted) => {
+    game.sound.mute = muted;
+  });
+});
