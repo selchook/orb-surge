@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { CrazyGamesSDK } from '../utils/CrazyGamesSDK';
+import { onPlatform } from '../ayvago/platform';
 
 export class GameOverScene extends Phaser.Scene {
   constructor() {
@@ -46,7 +46,7 @@ export class GameOverScene extends Phaser.Scene {
     }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
     restartBtn.on('pointerdown', () => {
-      CrazyGamesSDK.gameplayStart();
+      onPlatform((p) => p.gameplayStart());
       this.scene.start('GameScene');
     });
     restartBtn.on('pointerover', () => restartBtn.setStyle({ backgroundColor: '#0099cc' }));
@@ -67,7 +67,7 @@ export class GameOverScene extends Phaser.Scene {
 
     // R key shortcut
     this.input.keyboard!.on('keydown-R', () => {
-      CrazyGamesSDK.gameplayStart();
+      onPlatform((p) => p.gameplayStart());
       this.scene.start('GameScene');
     });
   }

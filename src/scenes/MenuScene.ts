@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { CrazyGamesSDK } from '../utils/CrazyGamesSDK';
+import { onPlatform } from '../ayvago/platform';
 
 export class MenuScene extends Phaser.Scene {
   private particles: Phaser.GameObjects.Particles.ParticleEmitter[] = [];
@@ -72,9 +72,6 @@ export class MenuScene extends Phaser.Scene {
       fontFamily: 'Arial',
       color: '#888888'
     }).setOrigin(0.5);
-
-    // Initialize CrazyGames SDK
-    CrazyGamesSDK.init();
   }
 
   private createBackgroundParticles(): void {
@@ -106,7 +103,7 @@ export class MenuScene extends Phaser.Scene {
   }
 
   private startGame(): void {
-    CrazyGamesSDK.gameplayStart();
+    onPlatform((p) => p.gameplayStart());
     this.scene.start('GameScene');
   }
 }

@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { CrazyGamesSDK } from '../utils/CrazyGamesSDK';
+import { onPlatform } from '../ayvago/platform';
 
 interface Particle {
   circle: Phaser.GameObjects.Arc;
@@ -286,12 +286,16 @@ export class GameScene extends Phaser.Scene {
 
   private triggerGameOver(): void {
     this.isGameOver = true;
-    CrazyGamesSDK.gameplayStop();
+    const finalScore = this.score;
+    onPlatform((p) => {
+      p.gameplayStop();
+      p.endGame({ score: finalScore, won: false });
+    });
 
     const prev = parseInt(localStorage.getItem('orbSurgeHighScore') || '0');
     if (this.score > prev) {
       localStorage.setItem('orbSurgeHighScore', String(this.score));
-      CrazyGamesSDK.happyTime();
+      onPlatform((p) => p.celebrate());
     }
 
     this.time.delayedCall(300, () => {
